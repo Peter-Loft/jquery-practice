@@ -1,0 +1,43 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <form id = "movieForm">
+        <label> Movie Title:
+            <input type="text" class = "inputField">
+        </label>
+        <p></p>
+        <label> Rating:
+            <input type="text" class = "inputField">
+        </label>
+    </form>
+    <button id="submit">Submit</button>
+    <div id = "movieCtr">
+        
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script>
+        console.log($("#submit"));
+        $("#submit").on("click", createRating);
+
+        function createRating() {
+            let titleField = $(".inputField").eq(0).val();
+            let ratingField = parseInt($(".inputField").eq(1).val());
+            $("#movieCtr").append($("<div>").on("click", deleteRating).append(`<p>${titleField} ${ratingField}</p>`).append("<button>Delete</button>"));
+        
+        }
+
+        function deleteRating(e) {
+            e.currentTarget.remove();
+        }
+
+
+    </script>
+</body>
+</html>
