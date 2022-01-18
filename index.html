@@ -58,7 +58,7 @@
     </aside>
   </div>
   <div class="row mb-5">
-    <div class="col-sm-4">
+    <div id="inputs" class="col-sm-4">
       Red
       <input class="form-control" type="number" min="0" max="255" value="255">
     </div>
@@ -80,6 +80,25 @@
   $("#title").css("font-size", Math.floor(Math.random() * 101));
   $("ol").append("<li> What day to be alive. </li>");
   $("<li> What a GREAT day </li>").insertAfter($("li").last());
+  $("ol").remove();
+  $("<p> Sorry for the list, it was truly awful.</p>").insertAfter($("h4"));
+  console.log($(".form-control").length);
+  $(".form-control").change(changeBgColor);
+
+  $("img").on("click", function(e){
+    e.target.remove();
+  });
+
+  function changeBgColor(){
+    console.log("changeBgColor()");
+    let $inputs = $(".form-control");
+    let color = `${$inputs.eq(0).val()}, ${$inputs.eq(1).val()}, ${$inputs.eq(2).val()}`;
+    console.log(color);
+    
+    $("body").css("background", `rgb(${color})`);
+  }
+  
+
 </script>
 </body>
 
